@@ -6,7 +6,50 @@ dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Dat
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/tikhonlavrev/razresheniye-auth/main/authentication911 > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f /root/tmp
+}
 
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/tikhonlavrev/razresheniye-auth/main/authentication911 | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
+
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
+else
+res="Permission Accepted..."
+fi
+}
+
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/tikhonlavrev/razresheniye-auth/main/authentication911 | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
 clear
 red='\e[1;31m'
 green='\e[0;32m'
@@ -18,7 +61,7 @@ echo "Progress..."
 sleep 3
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-
+PERMISSION
 if [ "$res" = "Permission Accepted..." ]; then
 green "Permission Accepted.."
 else
@@ -351,7 +394,7 @@ wget -q -O /usr/bin/banner "https://raw.githubusercontent.com/tikhonlavrev/VPN-F
 wget -q -O /usr/bin/sshws "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/ssh/ins-sshws.sh" && chmod +x /usr/bin/sshws
 wget -q -O /usr/bin/ssh-menu "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/menu_all/ssh-menu.sh" && chmod +x /usr/bin/ssh-menu
 wget -q -O /usr/bin/port-wssl "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/ssh/port-ws-ssl.sh" && chmod +x /usr/bin/port-wssl
-wget -q -O /usr/bin/ohp https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/ohp && chmod +x /usr/bin/ohp
+wget -q -O /usr/bin/ohp https://scrzoke.000webhostapp.com/ohp && chmod +x /usr/bin/ohp
 wget -q -O /usr/bin/ohp-ssh "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/dll/ohp-ssh.sh" && chmod +x /usr/bin/ohp-ssh
 wget -q -O /usr/bin/ohp-db "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/dll/ohp-db.sh" && chmod +x /usr/bin/ohp-db
 wget -q -O /usr/bin/ohp-opn "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/dll/ohp-opn.sh" && chmod +x /usr/bin/ohp-opn
