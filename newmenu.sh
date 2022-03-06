@@ -16,7 +16,7 @@ rekk='V2RAY'
 bec='v2ray'
 fi
 
-PERMISSION
+
 
 if [ "$res" = "Expired" ]; then
 Exp="\033[1;31mExpired\033[0m"

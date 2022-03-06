@@ -6,7 +6,7 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-PERMISSION
+
 if [ "$res" = "Permission Accepted..." ]; then
 echo -ne
 else

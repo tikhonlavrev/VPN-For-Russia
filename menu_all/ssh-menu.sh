@@ -6,7 +6,7 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-PERMISSION
+
 if [ -f /home/needupdate ]; then
 red "Your script need to update first !"
 exit 0
