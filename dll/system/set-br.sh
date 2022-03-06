@@ -77,9 +77,7 @@ EOF
 chown -R www-data:www-data /etc/msmtprc
 sleep 1
 echo -e "[ ${green}INFO${NC} ] Downloading files... "
-wget -q -O /usr/bin/backup "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/dll/system/backup.sh" && chmod +x /usr/bin/backup
 wget -q -O /usr/bin/bckp "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/dll/system/bckp.sh" && chmod +x /usr/bin/bckp
-wget -q -O /usr/bin/restore "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/dll/system/restore.sh" && chmod +x /usr/bin/restore
 wget -q -O /usr/bin/kernel-updt "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/dll/system/kernel-updt.sh" && chmod +x /usr/bin/kernel-updt
 wget -q -O /usr/bin/ubuntu-kernel "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/dll/system/ubuntu-kernel.sh" && chmod +x /usr/bin/ubuntu-kernel
 wget -q -O /usr/bin/ram "https://raw.githubusercontent.com/tikhonlavrev/VPN-For-Russia/main/dll/system/ram.py" && chmod +x /usr/bin/ram

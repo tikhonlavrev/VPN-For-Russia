@@ -23,7 +23,7 @@ fi
 
 cd
 MYIP=$(curl -sS ipv4.icanhazip.com)
-NameUser=$(curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk | grep $MYIP | awk '{print $2}')
+NameUser=$(curl -sS https://raw.githubusercontent.com/tikhonlavrev/razresheniye-auth/main/authentication911 | grep $MYIP | awk '{print $2}')
 
 cekdata=$(curl -sS https://raw.githubusercontent.com/scvps/user-backup-db/main/$NameUser/$NameUser.zip | grep 404 | awk '{print $1}' | cut -d: -f1)
 

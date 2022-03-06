@@ -22,7 +22,7 @@ if [ "$res" = "Expired" ]; then
 Exp="\033[1;31mExpired\033[0m"
 rm -f /home/needupdate > /dev/null 2>&1
 else
-Exp=$(curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk | grep $MYIP | awk '{print $3}')
+Exp=$(curl -sS https://raw.githubusercontent.com/tikhonlavrev/razresheniye-auth/main/authentication911 | grep $MYIP | awk '{print $3}')
 fi
 chck_b(){
 	PID=`ps -ef |grep -v grep | grep scvps_bot |awk '{print $2}'`
